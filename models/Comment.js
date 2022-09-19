@@ -28,7 +28,7 @@ Comment.init(
       },
     },
     comment_content: {
-      type: DataTypes.ABSTRACT.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1],
