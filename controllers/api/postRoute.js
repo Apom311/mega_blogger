@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
       },
     ],
   })
-    .then((postData) => res.json(postData))
+    .then((dbPostData) => res.json(dbPostData))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
@@ -61,12 +61,12 @@ router.get('/:id', (req, res) => {
       },
     ],
   })
-    .then((postData) => {
-      if (!postData) {
+    .then((dbPostData) => {
+      if (!dbPostData) {
         res.status(404).json({ message: 'No post found with this id' });
         return;
       }
-      res.json(postData);
+      res.json(dbPostData);
     })
     .catch((err) => {
       console.log(err);
@@ -80,7 +80,7 @@ router.post('/', withAuth, (req, res) => {
     post_content: req.body.post_content,
     user_id: req.session.user_id,
   })
-    .then((postData) => res.json(postData))
+    .then((dbPostData) => res.json(dbPostData))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
@@ -99,12 +99,12 @@ router.put('/:id', withAuth, (req, res) => {
       },
     }
   )
-    .then((postData) => {
-      if (!postData) {
+    .then((dbPostData) => {
+      if (!dbPostData) {
         res.status(404).json({ message: 'No post found with this id' });
         return;
       }
-      res.json(postData);
+      res.json(dbPostData);
     })
     .catch((err) => {
       console.log(err);
@@ -118,12 +118,12 @@ router.delete('/:id', withAuth, (req, res) => {
       id: req.params.id,
     },
   })
-    .then((postData) => {
-      if (!postData) {
+    .then((dbPostData) => {
+      if (!dbPostData) {
         res.status(404).json({ message: 'No post found with this id' });
         return;
       }
-      res.json(postData);
+      res.json(dbPostData);
     })
     .catch((err) => {
       console.log(err);

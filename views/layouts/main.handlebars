@@ -11,7 +11,9 @@
     <header>
       <nav>
         {{#if logged_in}}
-          <a href='/profile'>Profile</a>
+          <a href='/homepage'>Homepage</a>
+          <a href='/dashboard'>Dashboard</a>
+          <a href='/dashboard/create/'>Create Post</a>
           <button class='logout-button'>logout</button>
         {{else}}
           <a href='/login'>login</a>
