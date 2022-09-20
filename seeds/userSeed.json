@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "username": "super_jeff",
+    "email": "jeff@jeff.com",
+    "password": "jeff"
+  },
+  {
+    "id": 2,
+    "username": "anActual-uniCorn",
+    "email": "rainbowJack@pony.net",
+    "password": "sparkle"
+  },
+  {
+    "id": 3,
+    "username": "frothy",
+    "email": "frothandfoam@reference.org",
+    "password": "pa$$w0rd"
+  }
+]

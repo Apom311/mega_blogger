@@ -4,27 +4,54 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <title>Super Mega Plus Blog</title>
+    <link
+      rel='stylesheet'
+      href='https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css'
+    />
     <link rel='stylesheet' href='/css/normalize.css' />
     <link rel='stylesheet' href='/css/style.css' />
+
   </head>
   <body>
     <header>
       <nav>
         {{#if logged_in}}
-          <a href='/homepage'>Homepage</a>
-          <a href='/dashboard'>Dashboard</a>
-          <a href='/dashboard/create/'>Create Post</a>
-          <button class='logout-button'>logout</button>
+          <a href='/' class='navbar-item is-hoverable pt-1'>homepage</a>
+          <a
+            href='/dashboard'
+            class='navbar-item is-hoverable pt-1'
+          >dashboard</a>
+          <a
+            href='/dashboard/create/'
+            class='navbar-item is-hoverable pt-1 mr-4'
+          >create post</a>
+          <button id='logout' class='button is-danger'>logout</button>
         {{else}}
-          <a href='/login'>login</a>
+          <a href='/' class='navbar-item is-hoverable pt-1'>homepage</a>
+          <a href='/login' class='button is-primary'>login</a>
         {{/if}}
       </nav>
     </header>
     <main>
       {{{body}}}
     </main>
-    {{#if logged_in}}
-      <script src='/js/logout.js'></script>
+    <footer class='footer rows pb-2'>
+      <div class='row-is-full content has-text-centered'>
+        <p>
+          <a href='/'>homepage</a>{{#if loggedIn}}
+            |
+            <a href='/dashboard/'>dashboard</a>
+            |
+            <a href='/dashboard/create/'>create new post</a>
+          {{else}}
+            |
+            <a href='/login/'>login</a>
+          {{/if}}
+        </p>
+      </div>
+    </footer>
+    {{#if loggedIn}}
+      <script src='/javascript/logout.js'></script>
     {{/if}}
   </body>
 </html>

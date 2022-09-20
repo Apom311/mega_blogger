@@ -16,12 +16,11 @@ const hbs = exphbs.create({ helpers });
 const sess = {
   secret: 'Super secret secret',
   cookie: {
-    maxAge: 300000,
-    httpsOnly: true,
-    secure: false,
-    sameSite: 'strict',
+    //automatically expire after 10 min
+    expires: 10 * 60 * 1000,
   },
-  resave: false,
+  resave: true,
+  rolling: true,
   saveUninitialized: true,
   store: new SequelizeStore({
     db: sequelize,
@@ -30,15 +29,15 @@ const sess = {
 
 app.use(session(sess));
 
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(routes);
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
+app.use(routes);
+//turn on server
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
